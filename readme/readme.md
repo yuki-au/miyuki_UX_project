@@ -39,12 +39,16 @@ Back-end
 * UX2(UI)/Project2(PHP)
 
 1. index.html 
+    
     index.php contains 5 pages. 
+    
     Sign in page/Register page/Category list page (part of registration part)/Shopping page/Update category list page 
 
 
 2. JS folder 
+
 app.js - used to integrate the user interface and each php file 
+
 function.js - includes the functions to control the web application  
 
  
