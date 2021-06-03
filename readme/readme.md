@@ -45,6 +45,7 @@ Match is created by the follwing technoligies:
     Sign in page/Register page/Category list page (part of registration part)/Shopping page/Update category list page 
 
 
+
 2. JS folder 
 
     app.js - used to integrate the user interface and each php file 
@@ -111,17 +112,17 @@ In src folder
 
 ↓I haven't touched the following folder for the project
 
-    - App.test.js
+-   App.test.js
 
-    - Panel.js
+-   Panel.js
 
-    - react-app-env.d.ts
+-   react-app-env.d.ts
 
-    - reactWebVitals.js
+-   reactWebVitals.js
 
-    - setupTests.js
+-   setupTests.js
 
-    - Title.js
+-   Title.js
 
 
 
