@@ -29,14 +29,20 @@
         }
 
     // Rate limit Web Service to one request per second per user session 
+
     public function is_rate_limited() {
+
+        date_default_timezone_set('Australia/Brisbane');
+        $limit_time = date("d-m-Y H:i:s") . "." . substr(explode(".", (microtime(true) . ""))[1], 0, 1);
+        $second = date("d-m-Y H:i:s") . "." . substr(explode(".", (microtime(true)+.5. ""))[1], 0, 1);
              
         if($this->user_request == 0) {
-            $this->user_request = time(); 
+            $this->user_request = $limit_time;
             return true;
         }
 
-        if($this->user_request == time()) {
+        if($this->user_request == $second) {
+            $this->user_request == 0 ;
             return false;
         }                                                                                                                                                                                           
         
@@ -45,34 +51,80 @@
     }
 
 
+
+
+
+    // public function is_rate_limited() {
+             
+    //     if($this->user_request == 0) {
+    //         $this->user_request = time(); 
+    //         return true;
+    //     }
+
+    //     if($this->user_request == time()) {
+    //         return false;
+    //     }                                                                                                                                                                                           
+        
+    //     return true;
+        
+    // }
+
+
     // // Limit per session request to 1,000 in a 24hours period 
     public function is_session_limited() {
 
-            if($this->count_request == 0) {
-                // count_request comes from each session
-                return false;
-                }else{
-                //  once user login, 
-                // if it takes 24 hours↓
-                    if(date("d-m-Y H:i:s",strtotime($this->request_datetime. "+1 day"))) {
-                    if ($this->count_request>=1000) {
-                        
+        if($this->count_request == 0) {
+            // count_request comes from each session
+            return false;
+            }else{
+            //  once user login, 
+            // if it takes 24 hours↓
+                if(date("d-m-Y H:i:s",strtotime($this->request_datetime. "+1 day"))) {
+                if ($this->count_request>=500) {
+                    
+                    $this->count_request=0;
+                    return false;
+                    
+                    }else{
                         $this->count_request=0;
-                        return false;
-                        
-                        }else{
-                            // less than 1000 times
-                            $this->count_request=0;
-                            return true;
-                        }
-                        
                         return true;
-                }else{
-                    //　time is less than 24 hours
+                    }
+                    
                     return true;
-                }
-            }       
-        }
+            }else{
+                //　time is less than 24 hours
+                return true;
+            }
+        }       
+    }
+
+    // public function is_session_limited() {
+
+    //         if($this->count_request == 0) {
+    //             // count_request comes from each session
+    //             return false;
+    //             }else{
+    //             //  once user login, 
+    //             // if it takes 24 hours↓
+    //                 if(date("d-m-Y H:i:s",strtotime($this->request_datetime. "+1 day"))) {
+    //                 if ($this->count_request>=1000) {
+                        
+    //                     $this->count_request=0;
+    //                     return false;
+                        
+    //                     }else{
+    //                         // less than 1000 times
+    //                         $this->count_request=0;
+    //                         return true;
+    //                     }
+                        
+    //                     return true;
+    //             }else{
+    //                 //　time is less than 24 hours
+    //                 return true;
+    //             }
+    //         }       
+    //     }
 
         //*****************************************************
         // Login part starts 

@@ -35,7 +35,9 @@ function fillLogForm(){
   // password part ends
   
 }
-  
+
+
+
   
 function fillRegForm(){
   var reg_name = document.getElementById('username_register');
@@ -44,43 +46,61 @@ function fillRegForm(){
   var reg_button = document.getElementById('register_btn');
 
 // username part starts
+
+if(reg_name.value =='' || reg_pass.value.match == '' || reg_repass.value == ''){
+
+  reg_button.setAttribute("disabled", "disabled");
+
+}else{
+
+  var check1 = false;
+  var check2 = false; 
+  reg_button.setAttribute("disabled", "disabled");
+
   if(reg_name.value.match(/^([a-zA-Z0-9]{4,})$/)){
-    document.getElementById('r_usname').innerHTML = "";
-    reg_name.style.border="1px solid #ced4da";
-    reg_button.removeAttribute("disabled");
+        document.getElementById('r_usname').innerHTML = "";
+        reg_name.style.border="1px solid #ced4da";
+        check1 = true;
+        // reg_button.removeAttribute("disabled");
 
-  }else{
-    document.getElementById('r_usname').innerHTML = "Username at least 6 digits";
-    reg_name.style.border="1px solid red";
-    reg_button.setAttribute("disabled", "disabled");
-  }
+      }else{
+        document.getElementById('r_usname').innerHTML = "Alphabets & numbers with minimum 6 digits";
+        reg_name.style.border="1px solid red";
 
-// username part ends 
+      }
 
-// password part starts
-  if(reg_pass.value.match(/^([a-zA-Z0-9]{6,})$/)){
-  document.getElementById('r_pass').innerHTML = "";
-  reg_pass.style.border="1px solid #ced4da";
-  reg_button.removeAttribute("disabled");
-  var res;
+    // username part ends 
 
-      if (reg_pass.value == reg_repass.value){
-            res = true;
-            document.getElementById('r_re_pass').innerHTML = "";
-            reg_button.removeAttribute("disabled");
-        }else{
-            res = false;
-            document.getElementById('r_re_pass').innerHTML = "Passwords are not matched";
-            reg_button.setAttribute("disabled", "disabled");
-        }
+    // password part starts
+    if(reg_pass.value.match(/^([a-zA-Z0-9]{6,})$/)){
+      document.getElementById('r_pass').innerHTML = "";
+      reg_pass.style.border="1px solid #ced4da";
+      check2 = false;
+    
+          if (reg_pass.value == reg_repass.value){
+                check2 = true;
+                document.getElementById('r_re_pass').innerHTML = "";
+            }else{
+                document.getElementById('r_re_pass').innerHTML = "Passwords are not matched";
+            }
 
-  }else{
-    document.getElementById('r_pass').innerHTML = "Password minimum 6 digits";
-    reg_pass.style.border="1px solid red";
-    reg_button.setAttribute("disabled", "disabled");
-  }
-  // password part ends
+      }else{
+        document.getElementById('r_pass').innerHTML = "Password minimum 6 digits";
+        reg_pass.style.border="1px solid red";
+      }
+    
+
+      if(check1 == true && check2 == true){
+        reg_button.removeAttribute("disabled");
+
+      }else{
+      reg_button.setAttribute("disabled", "disabled");
+      }
+
+     
+    }
 }
+
 
 
 // ******************************

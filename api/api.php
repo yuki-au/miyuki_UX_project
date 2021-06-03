@@ -154,27 +154,27 @@ if(strpos($request->headers->get('referer'),'lit-sea-18183.herokuapp.com')){
         
 
                 // if($request->request->get('ud_categories')){
-                    if(!empty($request->request->get('ud_categories'))){
-                    
-                    $res = $sqsdb->updateCatList(
-                    $session->get('sessionObj')->returnUser(),
-                    $request->request->get('ud_categories'));
-
-                    
-                    if($res == false) {
-                        // Updating category list fail
+                if(empty($request->request->get('ud_categories'))){
                         $response->setStatusCode(400);
-                    } else {
-                        $session->get('sessionObj')->updatelist($res);
-                        $response->setStatusCode(200);
-                        $response->setContent(json_encode($res));
-                    }
-                } else{
-                    $response->setStatusCode(400);
+                 
+                  } else{
+                    $res = $sqsdb->updateCatList(
+                        $session->get('sessionObj')->returnUser(),
+                        $request->request->get('ud_categories'));
+    
+                        
+                        if($res == false) {
+                            // Updating category list fail
+                            $response->setStatusCode(400);
+                        } else {
+                            $session->get('sessionObj')->updatelist($res);
+                            $response->setStatusCode(200);
+                            $response->setContent(json_encode($res));
+                        }
                 } 
                 
                 
-                }
+             }
             
             //********************************************
             // Update user category list ends 
