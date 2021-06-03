@@ -47,63 +47,81 @@ Back-end
 
 2. JS folder 
 
-app.js - used to integrate the user interface and each php file 
+    app.js - used to integrate the user interface and each php file 
 
-function.js - includes the functions to control the web application  
+    function.js - includes the functions to control the web application  
 
  
 
 3. CSS folder 
-Style.css  
+
+    Style.css  
 
  
 
 4. Image folder 
-Contains the graphical elements used in my user interface 
+
+    It contains the graphical elements used in my user interface 
 
  
 
 5. Api folder 
 
-api.php  - responsible for main routing, contains http response and output json 
-db.php -used to manipulate database. 
-se.php - used to manage session information and secure the app 
+    api.php  - responsible for main routing, contains http response and output json 
+
+    db.php -used to manipulate database. 
+
+    se.php - used to manage session information and secure the app 
 
 
 6. Admin folder 
-admin-api.php - responsible for main routing, contains http response and output json for admin panel
-db.php -used to manipulate database from admin panel 
-se.php - used to manage session information and secure the app for admin panel 
+
+    admin-api.php - responsible for main routing, contains http response and output json for admin panel
+
+    db.php -used to manipulate database from admin panel 
+
+    se.php - used to manage session information and secure the app for admin panel 
 
 
 * Project3(Admin panel)
-In src folder 
- 
-1. component folder
-includes the menu component for the admin panel
 
-2. image
-Contains the graphical elements used in my admin panel
+    In src folder 
+    
+    1. component folder
 
-3. routes
-includes adminlogin, dashboard, logout, product and user js files 
+    includes the menu component for the admin panel
 
-4. App.css
+    2. image
 
-5. App.js
+    Contains the graphical elements used in my admin panel
 
-6. index.css
+    3. routes
 
-7. index.js
-file to store main Render call from ReactDOM.
+    includes adminlogin, dashboard, logout, product and user js files 
 
-↓I haven't touched the following folder for the project
-- App.test.js
-- Panel.js
-- react-app-env.d.ts
-- reactWebVitals.js
-- setupTests.js
-- Title.js
+    4. App.css
+
+    5. App.js
+
+    6. index.css
+
+    7. index.js
+
+    file to store main Render call from ReactDOM.
+
+    ↓I haven't touched the following folder for the project
+
+    - App.test.js
+
+    - Panel.js
+
+    - react-app-env.d.ts
+
+    - reactWebVitals.js
+
+    - setupTests.js
+    
+    - Title.js
 
 
 ## Installation 
@@ -155,7 +173,7 @@ npm start
 
 # All Technologies I used in Application 
 
--Local server 
+- Local server 
 Wamp v3.2.3.0
 
 - UX2
