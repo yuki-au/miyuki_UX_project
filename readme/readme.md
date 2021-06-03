@@ -23,11 +23,11 @@ the shopping application Match includes the followting components:
 
 Match is created by the follwing technoligies:
 
-UserInterface:
+##### UserInterface:
 - Bootstrap 
 - Javascript
 
-Back-end 
+#### Back-end 
 - PHP
 - symfony 
 - composer
@@ -46,6 +46,7 @@ Back-end
 
 
 2. JS folder 
+
     app.js - used to integrate the user interface and each php file 
 
     function.js - includes the functions to control the web application  
@@ -73,6 +74,7 @@ Style.css
 
 
 6. Admin folder 
+
     admin-api.php - responsible for main routing, contains http response and output json for admin panel
 
     db.php -used to manipulate database from admin panel
@@ -104,6 +106,7 @@ In src folder
 6. index.css
 
 7. index.js
+
     file to store main Render call from ReactDOM.
 
 ↓I haven't touched the following folder for the project
