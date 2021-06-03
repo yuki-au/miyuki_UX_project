@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="image/icon72.png">
+    <meta name="theme-color" content="#ea5566"/>
+    <link rel="manifest"  href="./manifest.json"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="image/app_icon.png"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  </head>
+
+<body class="">
+
+
+  <div onclick = "closeImg()" id="help_screen" hidden>
+    <div id="nav-close"></div>
+    <div id="description">
+      <span id="cross">✕</span>
+       <h2>Get started Match <h2>
+        <p class="desc">Welcome to Match. </p>
+        <p class="desc">Match a shopping website aims at women that sells items collated by your own category list.</p>
+        <h2>3 easy step to start Match</h2>
+        <p class="desc"> 1. Create your account</p>
+        <img class="desc_img" src="image/register.png">
+        <p class="desc"> 2. Create your category list</p>
+        <img class="desc_img" src="image/category.png">
+        <p class="desc"> 3. Start shopping!!</p>
+        <img class="desc_img" src="image/shopping.png">  
+     </div>
+   </div>
+
+  <!--************** Login part starts *****************-->
+  <div id="signin_content" class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+      <div class="user_card">
+        <div class="d-flex justify-content-center">
+          <div class="brand_logo_container">
+            <img src="image/formlogo.png" class="brand_logo" alt="Logo">
+          </div>
+        </div>
+
+        <div id="help_icon" onclick="showHelp()">
+          <span class="glyphicon">help<i class="fas fa-question-circle"></i></span>
+        </div>
+
+
+        <div class="d-flex justify-content-center form_container">
+          <span id="alert_message"></span>
+          <form id="loginform" action="#" method="POST">
+            <h3>Login</h3>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" id="login_username" name="login_username" class="form-control input_user" placeholder="username" maxlength="32"
+              title="try again" onblur="fillLogForm()">
+            </div>
+            <p id ="l_usname" class="small_desc"></p>
+            <div class="input-group mb-2">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input type="password" id="login_password" name="login_password" class="form-control input_pass" placeholder="password" id="login_password"
+               onblur="fillLogForm()">
+            </div>
+            <p id="l_pass" class="small_desc"></p>
+            <div class="d-flex justify-content-center mt-3 login_container">
+              <button id="login" type="submit" name="login" class="btn login_btn">Login</button>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="mt-4">
+          <div class="d-flex justify-content-center links">
+            Don't have an account? <a onclick="goRegPage()" id="register" class="ml-2">Sign Up</a>
+          </div>
+          <div class="d-flex justify-content-center links">
+            <a href="#">Forgot your password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--************** Login part ends *****************-->
+
+  <!--************** register part starts *****************-->
+  <div id="register_content" class="container h-100" hidden>
+    <div class="d-flex justify-content-center h-100">
+      <div class="user_card2">
+        <div class="d-flex justify-content-center">
+          <div class="brand_logo_container">
+            <img src="image/formlogo.png" class="brand_logo" alt="Logo">
+          </div>
+        </div>
+        <div id="register_area" class="d-flex justify-content-center form_container">
+        
+          <form id="registerform" action="#" method="POST">
+            <h3>Register</h3>
+            <div class="input-group mb-3">
+              <input type="text" name="username_register" id="username_register" class="form-control input_user" placeholder="username(at least 6 digits)"
+              onchange="fillRegForm()">
+            </div>
+            <p id ="r_usname" class="small_desc"></p>
+            <div class="input-group mb-2"> 
+              <input id="us_pass" type="password" name="password_register" class="form-control input_pass" placeholder="Password"  onchange="fillRegForm()">
+            </div>
+            <p id="r_pass" class="small_desc"></p>
+            <div class="input-group mb-2">
+              <input id="us_pass2" type="password" name="repassword_register" class="form-control input_pass" placeholder="Confirm Password" onchange="fillRegForm()">
+            </div>
+            <p id="r_re_pass" class="small_desc"></p>
+            <div class="d-flex justify-content-center mt-3 login_container">
+              <button type="submit" id="register_btn" name="submit" class="btn login_btn">Register</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="mt-4">
+          <div class="d-flex justify-content-center links">
+              Do you have an account?<a onclick = "goLogPage()" id="log_in" class="ml-2">Log In</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!--************** Register part ends *****************-->
+  
+ <!--************** category list for register starts *****************-->
+  <div id="reg_category" class="container h-100" hidden>
+    
+    <div class="d-flex justify-content-center h-100">
+      <div class="user_card3">
+        <div class="d-flex justify-content-center">
+          <div class="brand_logo_container">
+            <img src="image/new_logo.png" class="brand_logo" alt="Logo">
+          </div>
+        </div>
+        <div id="category_area" class="d-flex justify-content-center form_container">
+          <form id="categoryform" action="#" method="POST">
+            <h3>Create your category list</h3>
+            <h5>What is your mood?</h5>
+  
+          
+            <div class="row">
+
+              <div class="col custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="cat[]" id="check1_1" value="1">
+                <label class="label_cate2" for="check1_1">
+                  <p class="label_checked2">Checked</p>
+                  <img src="image/cheeruful.jpg" class="cate_img2" alt="cheerful">
+                </label>
+                <span class="c_num">1</span>
+                <label class="label_check2">Cheerful</label>
+              </div>
+
+              <div class="col custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="cat[]" id="check2_2" value="2">
+                <label class="label_cate2" for="check2_2">               
+                  <p class="label_checked2">Checked</p>
+                  <img src="image/calm.jpg" class="cate_img2" alt="cheerful">
+                </label>
+                <span class="c_num">2</span>
+                <label class="label_check2">Calm</label>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="cat[]" id="check3_3" value="3">
+                <label class="label_cate2" for="check3_3">
+                  <p class="label_checked2">Checked</p>
+                  <img src="image/mysterious.jpg" class="cate_img2" alt="mysterious">
+                </label>
+                <span class="c_num">3</span>
+                <label class="label_check2" for="check3">mysterious</label>
+              </div>
+              <div class="col custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="cat[]" id="check4_4" value="4">
+                <label class="label_cate2" for="check4_4">
+                  <p class="label_checked2">Checked</p>
+                  <img src="image/Energetic.jpg" class="cate_img2" alt="energitic">
+                </label>
+                <span class="c_num">4</span>
+                <label class="label_check2" for="check4" checked>Energestic</label>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="cat[]" id="check5_5" value="5">
+                <label class="label_cate2" for="check5_5">
+                  <p class="label_checked2">Checked</p>
+                  <img src="image/peaceful.jpg" class="cate_img2" alt="energitic">
+                </label>
+                <label class="label_check2" for="check5">Peaceful</label>
+              </div>
+              <div class="col custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="cat[]" id="check6_6" value="6">
+                <label class="label_cate2" for="check6_6">
+                  <p class="label_checked2">Checked</p>
+                  <img src="image/aggressive.jpg" class="cate_img2" alt="aggressive">
+                </label>
+                <label class="label_check2" for="check6">Aggressive</label>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="cat[]" id="check7_7" value="7">
+                <label class="label_cate2" for="check7_7">
+                  <p class="label_checked2">Checked</p>
+                  <img src="image/confident.jpg" class="cate_img2" alt="confident">
+                </label>
+                <label class="label_check2" for="check7">confident</label>
+              </div>
+              <div class="col custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="cat[]" id="check8_8" value="8">
+                <label class="label_cate2" for="check8_8">
+                  <p class="label_checked2">Checked</p>
+                  <img src="image/thankful.jpg" class="cate_img2" alt="thankful">
+                </label>
+                <label class="label_check2" for="check8">Thankful</label>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center mt-3 login_container">
+              <button type="submit" id="create" name="submit" class="btn login_btn">Create</button>
+            </div>
+            <a id="back" onclick="backtoPage()" class="ml-2">back</a>
+          </form>
+        </div>
+      </div>
+    </div>
+ </div>
+
+  <!-- modal for users -->
+  <div id="modal_user" hidden>
+        <div class="modal_back"></div>
+      <form id="modal_content" method="GET" action="#">
+        <div class="modal_header">
+          Category List
+        </div>  
+        <div class="modal_middle">
+          <p>You choose <span id="modal_number">0</span> categories</p>
+          <p>Creating your category list</p>
+          <div class="text-center">
+            <div class="spin">
+              <div class="spinner-border text-danger" role="status"></div>
+            </div>
+          </div>
+
+        </div>
+        <div id="modal_botton" class="d-flex justify-content-center mt-3 login_container">
+          <button type="submit" id="save" name="submit" class="btn login_btn">We are ready!</button>
+        </form>
+  </div>
+    <!-- modal for users -->
+</div>
+ <!--************** category list for register ends *****************-->
+
+
+ <!--************** shopping screen starts *****************-->
+  <div id="shopping_screen" class="container h-100" hidden>
+    <nav id="top_nav" class="navbar navbar-dark fixed-top">
+      <!-- <nav id="top_nav" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> -->
+      <div id="menu_content" class="container">
+        <div id="shop_logo">
+          <a class="navbar-brand" href="#"><img class="logo_shop" src="image/logo_white.png"></a>
+        </div>
+
+        <div id="menu_right">
+          <div id="search_area" class="input-group rounded">
+            <button id="search-button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#searchResponsive"
+            aria-controls="searchResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i id="search_top" class="fas fa-search fa-lg"></i>
+            </button>
+          </div>
+          <!-- <div id="cart_logo">
+            <a id="link_cart"><i id="shopping" class="fas fa-shopping-cart"></i></a>
+          </div> -->
+          <div id="night_mode" onclick="iconChange()">
+            <i id="svgimage" class="fas fa-sun fa-2x"></i>
+          </div>
+          
+          <button id="dropnav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="searchResponsive">
+          <div id="search_check" class="navbar-nav">
+            <input name="search_word" id="search_hidden" type="search" onclick="searchBox()" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" value=""/>
+            <i id ="s_icon" class="fas fa-search"></i>
+          </div>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav" onclick="closeMenu()">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="link_catlist">Category list</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us</a>
+            </li>
+            <li class="nav-item">
+            <a id="logoutbutton">logout</a>
+            </li>
+          </ul>
+        </div>
+
+      
+
+      </div>
+    </nav>
+    <!-- Page Content -->
+    <div id="shop_content" class="container">
+      <!-- Page Features -->
+      <div id="product_info" class="row text-center">
+      </div>
+    </div>
+  </div>
+ <!--************** shopping screen ends *****************-->
+
+ <!--************** Update categylist starts *****************-->
+
+  <div id="categylist" class="container h-100" hidden>
+    
+      <div class="d-flex justify-content-center h-100">
+        <div class="user_card3">
+        <div class="d-flex justify-content-center">
+            <div class="brand_logo_container">
+              <img src="image/formlogo.png" class="brand_logo" alt="Logo">
+             </div>
+        </div>
+          <div id="category_area" class="d-flex justify-content-center form_container">
+            <form id="update_cat_form" action="#" method="POST">
+            <h3>Update your category list</h3>
+                
+              <div class="row">
+                <div class="col custom-control custom-checkbox">
+                  <input type="checkbox" class="category-input" name="cat2[]" id="check1" value="1">
+                  <label class="label_cate2" for="check1">
+                    <p class="label_checked2">Checked</p>
+                    <img src="image/cheeruful.jpg" class="cate_img2" alt="cheerful">
+                  </label>
+                  <label class="label_check2">Cheerful</label>
+                </div>
+
+                <div class="col custom-control custom-checkbox">
+                  <input type="checkbox" class="category-input" name="cat2[]" id="check2" value="2">
+                  <label class="label_cate2" for="check2">               
+                    <p class="label_checked2">Checked</p>
+                    <img src="image/calm.jpg" class="cate_img2" alt="cheerful">
+                  </label>
+                  <label class="label_check2">Calm</label>
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="col custom-control custom-checkbox">
+                  <input type="checkbox" class="category-input" name="cat2[]" id="check3" value="3">
+                  <label class="label_cate2" for="check3">
+                    <p class="label_checked2">Checked</p>
+                    <img src="image/mysterious.jpg" class="cate_img2" alt="mysterious">
+                  </label>
+                  <label class="label_check2" for="check3">mysterious</label>
+                </div>
+                <div class="col custom-control custom-checkbox">
+                  <input type="checkbox" class="category-input" name="cat2[]" id="check4" value="4">
+                  <label class="label_cate2" for="check4">
+                    <p class="label_checked2">Checked</p>
+                    <img src="image/Energetic.jpg" class="cate_img2" alt="energitic">
+                  </label>
+                  <label class="label_check2" for="check4" checked>Energestic</label>
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="col custom-control custom-checkbox">
+                  <input type="checkbox" class="category-input" name="cat2[]" id="check5" value="5">
+                  <label class="label_cate2" for="check5">
+                    <p class="label_checked2">Checked</p>
+                    <img src="image/peaceful.jpg" class="cate_img2" alt="energitic">
+                  </label>
+                  <label class="label_check2" for="check5">Peaceful</label>
+                </div>
+                <div class="col custom-control custom-checkbox">
+                  <input type="checkbox" class="category-input" name="cat2[]" id="check6" value="6">
+                  <label class="label_cate2" for="check6">
+                    <p class="label_checked2">Checked</p>
+                    <img src="image/aggressive.jpg" class="cate_img2" alt="aggressive">
+                  </label>
+                  <label class="label_check2" for="check6">Aggressive</label>
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="col custom-control custom-checkbox">
+                  <input type="checkbox" class="category-input" name="cat2[]" id="check7" value="7">
+                  <label class="label_cate2" for="check7">
+                    <p class="label_checked2">Checked</p>
+                    <img src="image/confident.jpg" class="cate_img2" alt="confident">
+                  </label>
+                  <label class="label_check2" for="check7">confident</label>
+                </div>
+                <div class="col custom-control custom-checkbox">
+                  <input type="checkbox" class="category-input" name="cat2[]" id="check8" value="8">
+                  <label class="label_cate2" for="check8">
+                    <p class="label_checked2">Checked</p>
+                    <img src="image/thankful.jpg" class="cate_img2" alt="thankful">
+                  </label>
+                  <label class="label_check2" for="check8">Thankful</label>
+                </div>
+              </div>
+    
+              <div class="d-flex justify-content-center mt-3 login_container">
+                <button type="submit" id="update" name="submit" class="btn login_btn">Update</button>
+              </div>
+              <div id="menu_content" class="container">
+                <a id="back_home">← Back</a>
+              </div>
+            </form>
+        </div>
+         <!--************** Update categylist starts *****************-->     
+      </div>
+    </div>
+  <div id="modal_user2" hidden>
+        <div class="modal_back"></div>
+      <form id="modal_content2" method="GET" action="#">
+        <div class="modal_header">
+          Category list
+        </div>  
+        <div class="modal_middle">
+          <p>You update has been</p>
+          <p>Successful!</p>
+          <div class="text-center">
+            <div class="spin">
+              <div class="spinner-border text-danger" role="status"></div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3 login_container">
+          <button type="submit" id="update_cat" name="submit" class="btn login_btn">Back to home</button>
+        </form>
+  </div>
+
+
+  </div>
+  <script src="js/app.js" defer></script>
+  <script src="js/function.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  <script>
+// ******************************
+// Service worker starts
+// ******************************
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./my_service_worker.js')
+  .then(function(reg) {
+    console.log('Successful' + reg.scope);
+  }).catch(function(error) {
+    console.log('Fail' + error);
+  });
+}
+
+// ******************************
+// Service worker ends
+// ******************************
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+
+{
+    "name":"Match shopping",
+    "short_name":"Match",
+    "description":"shoppping website",
+    "lang":"en",
+    "start_url":".",
+    "background_color":"#ea5566",
+    "theme_color" : "#ea5566",
+    "display":"standalone",
+    "icons":[
+        {
+            "src":"image/icon512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }, 
+        {
+            "src":"image/icon192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src":"image/icon144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src":"image/icon72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+        ]
+    }
